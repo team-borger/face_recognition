@@ -19,6 +19,12 @@ RUN apt-get install -y --fix-missing \
     libjpeg-dev \
     liblapack-dev \
     libswscale-dev \
+    libglib2.0-0 \
+    libsm6 \
+    libxrender1 \
+    libxext6 \
+    libgl1-mesa-glx \
+    libopencv-dev \
     pkg-config \
     python3-dev \
     python3-numpy \
@@ -44,6 +50,7 @@ RUN cd ~ && \
 COPY . /root/face_recognition
 RUN cd /root/face_recognition && \
     pip3 install -r requirements.txt && \
+    pip3 install opencv-python-headless && \
     python3 setup.py install
 
 # Add pip3 install opencv-python==4.1.2.30 if you want to run the live webcam examples
